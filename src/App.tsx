@@ -5,11 +5,12 @@ function App() {
   return (
     <Layout>
       <h1>Faça o login</h1>
-      <label>Email</label>
-      <input />
+      <label htmlFor="emailInput">Email</label>
+      <input id="emailInput" type="email" />
 
-      <label>Senha</label>
-      <input />
+      <label htmlFor="passwordInput">Senha</label>
+      <input id="passwordInput" type="password" />
+      <button>Entrar</button>
     </Layout>
   );
 }
