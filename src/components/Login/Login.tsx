@@ -9,8 +9,15 @@ import {
 } from "@chakra-ui/react";
 import { login } from "../../services/login";
 import "../Login/Login.css";
+import { useState } from "react";
 
-function Login() {
+const Login = () => {
+  const [email, setEmail] = useState("");
+
+  const logar = () => {
+    alert(email);
+  };
+
   return (
     <ChakraProvider>
       <Box minHeight="75vh" backgroundColor="#1E192C" padding="25px">
@@ -35,6 +42,8 @@ function Login() {
             <Stack spacing={4}>
               <Input
                 placeholder="Email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
                 type="email"
                 borderRadius="md"
                 variant="outline"
@@ -48,7 +57,8 @@ function Login() {
                 color="white"
               />
               <Button
-                onClick={login}
+                // {/* TODO:  Criar um component IDButton colocar onClick: MouseEventHandler */}
+                onClick={() => login(email)}
                 backgroundColor="#FF4B60"
                 size="md"
                 width="100%"
@@ -62,6 +72,6 @@ function Login() {
       </Box>
     </ChakraProvider>
   );
-}
+};
 
 export default Login;

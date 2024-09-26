@@ -4,7 +4,7 @@ import "./components/css/App.css";
 import Login from "./components/Login/Login";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-import { Card } from "./components/Card"; // Importando o componente Card
+import { Card } from "./components/Card";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
