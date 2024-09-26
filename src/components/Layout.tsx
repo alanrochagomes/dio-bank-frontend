@@ -1,3 +1,4 @@
+import { Card } from "@chakra-ui/react";
 import { Footer } from "./Footer/Footer";
 import { Header } from "./Header/Header";
 
@@ -11,6 +12,7 @@ export const Layout = ({ children }: any) => {
         }}
       />
       {children}
+
       <Footer />
     </>
   );

@@ -1,15 +1,17 @@
+import React from "react";
+
 interface Icard {
-  id: number;
+  title: string;
   paragraph: string;
-  details: string;
+  details: string | number;
 }
 
-export const Card = ({ id, paragraph, details }: Icard) => {
+export const Card: React.FC<Icard> = ({ title, paragraph, details }) => {
   return (
-    <div>
-      <h1>Card {id}</h1>
+    <div className="service-card">
+      <h3>{title}</h3>
       <p>{paragraph}</p>
-      <p>{details}</p>
+      <h1>{details}</h1>
     </div>
   );
 };

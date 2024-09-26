@@ -4,6 +4,7 @@ import "./components/css/App.css";
 import Login from "./components/Login/Login";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
+import { Card } from "./components/Card"; // Importando o componente Card
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,24 +37,21 @@ function App() {
                 <section id="services" className="services">
                   <h2>O que oferecemos</h2>
                   <div className="service-cards">
-                    <div className="service-card">
-                      <h3>Conta Corrente</h3>
-                      <p>
-                        Abra sua conta corrente e aproveite nossos benefícios
-                        exclusivos.
-                      </p>
-                    </div>
-                    <div className="service-card">
-                      <h3>Empréstimos</h3>
-                      <p>Crédito rápido e fácil para o que você precisar.</p>
-                    </div>
-                    <div className="service-card">
-                      <h3>Investimentos</h3>
-                      <p>
-                        Faça seu dinheiro trabalhar para você com nossas opções
-                        de investimento.
-                      </p>
-                    </div>
+                    <Card
+                      title="Conta Corrente"
+                      paragraph="Abra sua conta corrente e aproveite nossos benefícios exclusivos."
+                      details={""}
+                    />
+                    <Card
+                      title="Empréstimos"
+                      paragraph="Crédito rápido e fácil para o que você precisar."
+                      details={""}
+                    />
+                    <Card
+                      title="Investimentos"
+                      paragraph="Faça seu dinheiro trabalhar para você com nossas opções de investimento."
+                      details={"Partir de R$ 1,00 aproveite!"}
+                    />
                   </div>
                 </section>
               </>
