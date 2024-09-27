@@ -9,18 +9,38 @@ import {
 } from "@chakra-ui/react";
 import { login } from "../../services/login";
 import "../Login/Login.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { api } from "../../api";
+
+interface UserData {
+  email: string;
+  password: string;
+  name: string;
+}
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [userData, setUserData] = useState<null | UserData>();
 
-  const logar = () => {
-    alert(email);
-  };
+  useEffect(() => {
+    const getData = async () => {
+      const data: any | UserData = await api;
+      setUserData(data);
+    };
+
+    getData();
+  }, []);
+
+  console.log(userData);
 
   return (
     <ChakraProvider>
       <Box minHeight="75vh" backgroundColor="#1E192C" padding="25px">
+        {userData === null || userData === undefined ? (
+          <h1 color="white">Loading..</h1>
+        ) : (
+          <h1 color="white">Informações carregadas</h1>
+        )}
         <Center>
           <Box
             marginTop="100px"
