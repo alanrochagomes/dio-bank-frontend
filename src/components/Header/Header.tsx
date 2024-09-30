@@ -22,6 +22,9 @@ export const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
           <li>
             <Link to="/login">Login</Link>
           </li>
+          <li>
+            <Link to="/conta">Conta</Link>
+          </li>
         </ul>
       </nav>
       <div className="mobile-menu-icon" onClick={toggleMenu}>

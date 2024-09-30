@@ -1,19 +1,21 @@
-import { Card } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { Footer } from "./Footer/Footer";
 import { Header } from "./Header/Header";
 
 export const Layout = ({ children }: any) => {
   return (
     <>
-      <Header
-        isMenuOpen={false}
-        toggleMenu={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
-      {children}
+      <Box minHeight="100vh">
+        <Header
+          isMenuOpen={false}
+          toggleMenu={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+        {children}
 
-      <Footer />
+        <Footer />
+      </Box>
     </>
   );
 };
