@@ -9,30 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { login } from "../../services/login";
 import "./Login.css";
-import { useState, useEffect } from "react";
-import { api } from "../../api";
-import { Layout } from "../../components/Layout";
+import { useState } from "react";
 
-interface UserData {
-  email: string;
-  password: string;
-  name: string;
-}
+import { Layout } from "../../components/Layout";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
-  const [userData, setUserData] = useState<null | UserData>();
-
-  useEffect(() => {
-    const getData = async () => {
-      const data: any | UserData = await api;
-      setUserData(data);
-    };
-
-    getData();
-  }, []);
-
-  console.log(userData);
 
   return (
     <ChakraProvider>
