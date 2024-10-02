@@ -1,6 +1,6 @@
+// Login.tsx
 import {
   Box,
-  Button,
   Center,
   ChakraProvider,
   Input,
@@ -9,23 +9,34 @@ import {
 } from "@chakra-ui/react";
 import { login } from "../../services/login";
 import "./Login.css";
-import { useState } from "react";
-
+import { useContext, useState } from "react";
 import { Layout } from "../../components/Layout";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../components/AppContext";
+import { Dbutton } from "../../components/DButton";
 
 const Login = ({ children }: any) => {
   const [email, setEmail] = useState<string>("");
+  const { setIsLoggedIn } = useContext(AppContext);
+  const navigate = useNavigate();
+
+  const validateUser = async (email: string) => {
+    const loggedIn = await login(email);
+
+    if (!loggedIn) {
+      alert("Email inválido");
+      return;
+    }
+
+    setIsLoggedIn(true);
+    navigate("/conta/1");
+  };
 
   return (
     <ChakraProvider>
       {children}
       <Layout>
         <Box minHeight="90vh" backgroundColor="#1E192C" padding="25px">
-          {/* {userData === null || userData === undefined ? (
-          <h1 color="white">Loading..</h1>
-          ) : (
-            <h1 color="white">Informações carregadas</h1>
-            )} */}
           <Center>
             <Box
               marginTop="100px"
@@ -61,16 +72,7 @@ const Login = ({ children }: any) => {
                   variant="outline"
                   color="white"
                 />
-                <Button
-                  // {/* TODO:  Criar um component IDButton colocar onClick: MouseEventHandler */}
-                  onClick={() => login(email)}
-                  backgroundColor="#FF4B60"
-                  size="md"
-                  width="100%"
-                  marginTop="5px"
-                >
-                  Entrar
-                </Button>
+                <Dbutton onClick={() => validateUser(email)} />
               </Stack>
             </Box>
           </Center>
@@ -81,3 +83,6 @@ const Login = ({ children }: any) => {
 };
 
 export default Login;
+function usseContext(): { setIsLoggedIn: any } {
+  throw new Error("Function not implemented.");
+}

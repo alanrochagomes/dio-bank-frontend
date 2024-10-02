@@ -5,6 +5,7 @@ import CardInfo from "../../components/CardInfo";
 import { useContext, useEffect, useState } from "react";
 import { api } from "../../api";
 import { AppContext } from "../../components/AppContext";
+import { Layout } from "../../components/Layout";
 
 interface UserData {
   email: string;
@@ -39,26 +40,28 @@ const Conta = () => {
   }
 
   return (
-    <Center>
-      <SimpleGrid columns={2} spacing={8} paddingTop={16}>
-        {userData === undefined || userData === null ? (
-          <Center>
-            <Spinner size="2xl" color="white" />
-          </Center>
-        ) : (
-          <>
-            <CardInfo
-              mainContent={`Bem vindo, ${userData?.name}!`}
-              content={`${actualData.getDay()}/${actualData.getMonth()}/${actualData.getFullYear()} ${actualData.getHours()}:${actualData.getMinutes()}`}
-            />
-            <CardInfo
-              mainContent="Saldo"
-              content={`R$ ${userData.balance}`}
-            ></CardInfo>
-          </>
-        )}
-      </SimpleGrid>
-    </Center>
+    <Layout>
+      <Center>
+        <SimpleGrid columns={2} spacing={8} paddingTop={16}>
+          {userData === undefined || userData === null ? (
+            <Center>
+              <Spinner size="2xl" color="white" />
+            </Center>
+          ) : (
+            <>
+              <CardInfo
+                mainContent={`Bem vindo, ${userData?.name}!`}
+                content={`${actualData.getDay()}/${actualData.getMonth()}/${actualData.getFullYear()} ${actualData.getHours()}:${actualData.getMinutes()}`}
+              />
+              <CardInfo
+                mainContent="Saldo"
+                content={`R$ ${userData.balance}`}
+              ></CardInfo>
+            </>
+          )}
+        </SimpleGrid>
+      </Center>
+    </Layout>
   );
 };
 
