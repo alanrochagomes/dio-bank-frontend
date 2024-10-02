@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../Header/Header.css";
 import diobankLogo from "../../assets/img/diobank.png";
+
+import { AppContext } from "../../App";
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -9,11 +11,15 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
+  const context = useContext(AppContext);
+  console.log("retorno", context);
+
   return (
     <header className="header">
       <div className="logo">
         <img src={diobankLogo} alt="Logo Diobank" />
       </div>
+
       <nav className="navbar">
         <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
           <li>
