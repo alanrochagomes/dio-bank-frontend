@@ -4,7 +4,7 @@ import "../Conta/Conta.css";
 import CardInfo from "../../components/CardInfo";
 import { useContext, useEffect, useState } from "react";
 import { api } from "../../api";
-import { AppContext } from "../../App";
+import { AppContext } from "../../components/AppContext";
 
 interface UserData {
   email: string;
@@ -16,9 +16,13 @@ interface UserData {
 
 const Conta = () => {
   const [userData, setUserData] = useState<null | UserData>();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const context = useContext(AppContext);
-  console.log("retorno da pagipna conta", context);
+  const { isLoggedIn } = useContext(AppContext);
+  console.log("retorno da pagipna conta", isLoggedIn);
+
+  !isLoggedIn && navigate("/");
 
   useEffect(() => {
     const getData = async () => {
@@ -30,9 +34,6 @@ const Conta = () => {
   }, []);
 
   const actualData = new Date();
-
-  const { id } = useParams();
-  const navigate = useNavigate();
 
   if (userData && id !== userData.id) {
     navigate("/");

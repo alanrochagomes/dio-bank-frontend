@@ -13,11 +13,12 @@ import { useState } from "react";
 
 import { Layout } from "../../components/Layout";
 
-const Login = () => {
+const Login = ({ children }: any) => {
   const [email, setEmail] = useState<string>("");
 
   return (
     <ChakraProvider>
+      {children}
       <Layout>
         <Box minHeight="90vh" backgroundColor="#1E192C" padding="25px">
           {/* {userData === null || userData === undefined ? (

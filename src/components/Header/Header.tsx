@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../Header/Header.css";
 import diobankLogo from "../../assets/img/diobank.png";
 
-import { AppContext } from "../../App";
+import { AppContext } from "../../components/AppContext";
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -27,9 +27,6 @@ export const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
           </li>
           <li>
             <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/conta">Conta</Link>
           </li>
         </ul>
       </nav>
