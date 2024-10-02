@@ -1,24 +1,32 @@
 import { login } from "./login";
-import { api } from "../api";
+
+const mockSetIsLoggedIn = jest.fn();
+const mockNavigate = jest.fn();
+
+jest.mock("react", () => ({
+  ...jest.requireActual("react"),
+  useContext: () => ({
+    setIsLoggedIn: mockSetIsLoggedIn,
+  }),
+}));
+
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom") as any),
+  useNavigate: () => mockNavigate,
+}));
 
 describe("login", () => {
-  const mockAlert = jest.fn();
-  window.alert = mockAlert;
-
   const mockEmail = "user@dio.bank";
 
   it("Deve exibir um alert com boas vindas caso o email seja válido", async () => {
     await login(mockEmail);
-    expect(mockAlert).toHaveBeenCalledWith(`Bem vindo ${mockEmail}!`);
-  });
-
-  it("Não deve exibir a mensagem de boas vindas sem o email", async () => {
-    await login(mockEmail);
-    expect(mockAlert).not.toHaveBeenCalledWith("Bem vindo!");
+    expect(mockSetIsLoggedIn).toHaveBeenCalledWith(true);
+    expect(mockNavigate).toHaveBeenCalledWith("/1");
   });
 
   it("Deve exibir um erro caso o email seja inválido", async () => {
     await login("email@invalido.com");
-    expect(mockAlert).toHaveBeenCalledWith("Email inválido");
+    expect(mockSetIsLoggedIn).not.toHaveBeenCalled();
+    expect(mockNavigate).not.toHaveBeenCalledWith("Email inválido");
   });
 });
