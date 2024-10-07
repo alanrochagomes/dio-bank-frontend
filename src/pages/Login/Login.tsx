@@ -1,4 +1,3 @@
-// Login.tsx
 import {
   Box,
   Center,
@@ -24,8 +23,7 @@ const Login = ({ children }: any) => {
     const loggedIn = await login(email);
 
     if (!loggedIn) {
-      alert("Email inválido");
-      return;
+      return alert("Email inválido");
     }
 
     setIsLoggedIn(true);
