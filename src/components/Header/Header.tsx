@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
 
   const logout = () => {
     setIsLoggedIn(false);
-    navigate("/");
+    navigate("/login");
   };
 
   return (
