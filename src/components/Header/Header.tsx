@@ -5,6 +5,7 @@ import diobankLogo from "../../assets/img/diobank.png";
 
 import { AppContext } from "../../components/AppContext";
 import { Button, Flex, Spacer } from "@chakra-ui/react";
+import { changeLocalStorage } from "../../services/storage";
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -16,6 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
   const navigate = useNavigate();
 
   const logout = () => {
+    changeLocalStorage({ login: false });
     setIsLoggedIn(false);
     navigate("/login");
   };

@@ -13,6 +13,7 @@ import { Layout } from "../../components/Layout";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../components/AppContext";
 import { Dbutton } from "../../components/DButton";
+import { changeLocalStorage } from "../../services/storage";
 
 const Login = ({ children }: any) => {
   const [email, setEmail] = useState<string>("");
@@ -27,6 +28,7 @@ const Login = ({ children }: any) => {
     }
 
     setIsLoggedIn(true);
+    changeLocalStorage({ login: true });
     navigate("/conta/1");
   };
 
