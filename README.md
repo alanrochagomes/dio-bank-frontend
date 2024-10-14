@@ -1,4 +1,4 @@
-# Desenvolvendo HomePage do Dio Bank
+# Desenvolvendo Front-End do Dio Bank
 desenvolvido por [Alan Rocha](https://github.com/alanrochagomes)
 
 #### Projeto desenvolvido com React
